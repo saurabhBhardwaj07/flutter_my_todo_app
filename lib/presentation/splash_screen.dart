@@ -20,7 +20,7 @@ class _AppsSplashScreenState extends State<AppsSplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: const Color(0xffF2F4F3),
+        backgroundColor: const Color(0xffF2F7F2),
         body: SafeArea(
           child: Container(
             height: double.infinity,
