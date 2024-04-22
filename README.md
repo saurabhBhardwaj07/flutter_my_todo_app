@@ -1,6 +1,6 @@
 # My Todo App
 
-Scratch win Prize with us.
+Add todo of daily task for better oraganized
 
 
 ## Folder Structure
