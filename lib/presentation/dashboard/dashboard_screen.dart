@@ -84,76 +84,73 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             childAspectRatio: 1.6,
                           ),
                           itemBuilder: (BuildContext context, int index) {
-                            return Hero(
-                              tag: "todoList",
-                              child: InkWell(
-                                onTap: () {
-                                  Navigator.pushNamed(context, "todoList",
-                                      arguments: cagtegoryList[index].text);
-                                },
-                                child: DecoratedBox(
-                                  decoration: BoxDecoration(
-                                      color: cagtegoryList[index].color,
-                                      borderRadius: BorderRadius.circular(12)),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(12.0),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Container(
-                                          height: 40,
-                                          width: 40,
-                                          decoration: const BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            color: Colors.white,
-                                          ),
-                                          padding: const EdgeInsets.all(8),
-                                          child: Image.asset(
-                                              cagtegoryList[index].iconPath),
+                            return InkWell(
+                              onTap: () {
+                                Navigator.pushNamed(context, "todoList",
+                                    arguments: cagtegoryList[index].text);
+                              },
+                              child: DecoratedBox(
+                                decoration: BoxDecoration(
+                                    color: cagtegoryList[index].color,
+                                    borderRadius: BorderRadius.circular(12)),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(12.0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        height: 40,
+                                        width: 40,
+                                        decoration: const BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: Colors.white,
                                         ),
-                                        const Spacer(),
-                                        Row(
-                                          children: [
-                                            Text(
-                                              cagtegoryList[index].text.name,
-                                              style: const TextStyle(
-                                                fontFamily: FontFamily.notoSans,
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w500,
-                                              ),
+                                        padding: const EdgeInsets.all(8),
+                                        child: Image.asset(
+                                            cagtegoryList[index].iconPath),
+                                      ),
+                                      const Spacer(),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            cagtegoryList[index].text.name,
+                                            style: const TextStyle(
+                                              fontFamily: FontFamily.notoSans,
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w500,
                                             ),
-                                            const Spacer(),
-                                            TweenAnimationBuilder<double>(
-                                              duration:
-                                                  const Duration(seconds: 2),
-                                              tween: Tween<double>(
-                                                  begin: 0,
-                                                  end: state
-                                                      .getCountONEnum(
-                                                          cagtegoryList[index]
-                                                              .text)
-                                                      .toDouble()),
-                                              builder: (context, value, child) {
-                                                return Text(
-                                                  state
-                                                      .getCountONEnum(
-                                                          cagtegoryList[index]
-                                                              .text)
-                                                      .toString(),
-                                                  style: const TextStyle(
-                                                    fontFamily:
-                                                        FontFamily.notoSans,
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
-                                                );
-                                              },
-                                            )
-                                          ],
-                                        )
-                                      ],
-                                    ),
+                                          ),
+                                          const Spacer(),
+                                          TweenAnimationBuilder<double>(
+                                            duration:
+                                                const Duration(seconds: 2),
+                                            tween: Tween<double>(
+                                                begin: 0,
+                                                end: state
+                                                    .getCountONEnum(
+                                                        cagtegoryList[index]
+                                                            .text)
+                                                    .toDouble()),
+                                            builder: (context, value, child) {
+                                              return Text(
+                                                state
+                                                    .getCountONEnum(
+                                                        cagtegoryList[index]
+                                                            .text)
+                                                    .toString(),
+                                                style: const TextStyle(
+                                                  fontFamily:
+                                                      FontFamily.notoSans,
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              );
+                                            },
+                                          )
+                                        ],
+                                      )
+                                    ],
                                   ),
                                 ),
                               ),
@@ -199,24 +196,16 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                 shrinkWrap: true,
                                 physics: const NeverScrollableScrollPhysics(),
                                 itemBuilder: (context, index) {
-                                  return Container(
-                                    decoration: BoxDecoration(
-                                        color: const Color(0xffADFCF9),
-                                        borderRadius:
-                                            BorderRadius.circular(36)),
-                                    margin: const EdgeInsets.only(bottom: 20),
-                                    padding: const EdgeInsets.all(12),
-                                    child: TodoListItem(
-                                      model: state[index],
-                                      bloc: todoBloc,
-                                      onEditCall: () async {
-                                        await Navigator.pushNamed(
-                                                context, "addEditTask",
-                                                arguments: state[index])
-                                            .then((value) => dashBloc
-                                                .add(DashboardInitialEvent()));
-                                      },
-                                    ),
+                                  return TodoListItem(
+                                    model: state[index],
+                                    bloc: todoBloc,
+                                    onEditCall: () async {
+                                      await Navigator.pushNamed(
+                                              context, "addEditTask",
+                                              arguments: state[index])
+                                          .then((value) => dashBloc
+                                              .add(DashboardInitialEvent()));
+                                    },
                                   );
                                 });
                       },
